@@ -73,8 +73,6 @@ func main() {
 	// viper package read .env
 	API_KEY := viperEnvVariable("API_KEY")
 
-	fmt.Printf("API KEY - %s\n", API_KEY)
-
 	if len(os.Args) >= 2 {
 		q = os.Args[1]
 	}
