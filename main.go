@@ -70,10 +70,15 @@ func viperEnvVariable(key string) string {
 func main() {
 	q := "Port-harcourt"
 
+	// viper package read .env
+	API_KEY := viperEnvVariable("API_KEY")
+
+	fmt.Printf("API KEY - %s\n", API_KEY)
+
 	if len(os.Args) >= 2 {
 		q = os.Args[1]
 	}
-	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=5edb5652cbae4f958cc115437242006&q=" + q + "&aqi=no&days=1&alerts=no")
+	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=" + API_KEY + "&q=" + q + "&aqi=no&days=1&alerts=no")
 	if err != nil {
 		panic(err)
 	}
