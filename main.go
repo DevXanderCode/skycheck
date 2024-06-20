@@ -5,7 +5,10 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 	"time"
+
+	"github.com/fatih/color"
 )
 
 type Weather struct {
@@ -34,7 +37,12 @@ type Weather struct {
 }
 
 func main() {
-	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=5edb5652cbae4f958cc115437242006&q=Port-harcourt&aqi=no&days=1&alerts=no")
+	q := "Port-harcourt"
+
+	if len(os.Args) >= 2 {
+		q = os.Args[1]
+	}
+	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=5edb5652cbae4f958cc115437242006&q=" + q + "&aqi=no&days=1&alerts=no")
 	if err != nil {
 		panic(err)
 	}
@@ -67,6 +75,12 @@ func main() {
 			continue
 		}
 
-		fmt.Printf("%s - %.0fC, %.0f%% %s\n", date.Format("15:04"), hour.TempC, hour.ChanceOfRain, hour.Condition.Text)
+		message := fmt.Sprintf("%s - %.0fC, %.0f%% %s\n", date.Format("15:04"), hour.TempC, hour.ChanceOfRain, hour.Condition.Text)
+
+		if hour.ChanceOfRain < 40 {
+			fmt.Println(message)
+		} else {
+			color.Red(message)
+		}
 	}
 }
