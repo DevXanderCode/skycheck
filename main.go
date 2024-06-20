@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -48,5 +49,11 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(string(body))
+	var weather Weather
+
+	err = json.Unmarshal(body, &weather)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(weather)
 }
