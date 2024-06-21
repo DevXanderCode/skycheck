@@ -74,7 +74,23 @@ func main() {
 	API_KEY := viperEnvVariable("API_KEY")
 
 	if len(os.Args) >= 2 {
-		q = os.Args[1]
+		input := os.Args[1]
+		switch input {
+		case "help", "--help", "-help", "-h", "--h", "?":
+			fmt.Println("Usage: skycheck [location]")
+			fmt.Println("---------OR---------------")
+			fmt.Println("Usage: skycheck [options]")
+			fmt.Println("")
+			fmt.Println("")
+			fmt.Println("")
+			fmt.Println("options:")
+			fmt.Println("help, -h, --h, -help, --help, ? ------------------------------ shows the usage help guide")
+			fmt.Println("skycheck [location]             ------------------------------ shows forecast for location.")
+			return
+		default:
+			q = input
+
+		}
 	}
 	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=" + API_KEY + "&q=" + q + "&aqi=no&days=1&alerts=no")
 	if err != nil {
