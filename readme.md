@@ -37,8 +37,8 @@ cd skycheck
 ## Usage
 
 1. **Search for a Location**: Use the skycheck command followed by the city name to find weather information for any city.
-2. **View Current Weather**: See the current temperature, chance of rain and weather condition.
-3. **Check the Forecast**: Navigate to the forecast section to see weather predictions for the next that days.
+2. **View Current Weather**: See the current temperature, chance of rain and weather conditions.
+3. **Check the Forecast**: Navigate to the forecast section for weather predictions for the next few days.
 
 ## Contributing
 
