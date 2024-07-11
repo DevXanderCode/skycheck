@@ -12,8 +12,6 @@ SkyCheck is a powerful and intuitive weather application that provides real-time
 - **Real-time Weather Updates**: Get the latest weather updates for your current location or any city worldwide.
 - **Detailed Forecasts**: View detailed weather forecasts for the next 7 days.
 - **Weather Alerts**: Receive alerts for severe weather conditions.
-- **Customizable Interface**: Personalize the app's interface to match your preferences.
-- **Multi-language Support**: Available in multiple languages for a global user base.
 
 ## Screenshots
 
